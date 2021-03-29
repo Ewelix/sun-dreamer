@@ -6,7 +6,8 @@ body {
 h1 {
   font-size: 300%;
 }
-a main {
+
+main {
   display: flex;
   align-items: center;
   justify-content: center;

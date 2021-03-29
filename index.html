@@ -4,28 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sun Dreamer 0.1</title>
     <link rel="stylesheet" href="css/main.css" />
+    <title>Sun Dreamer 0.1</title>
   </head>
   <body>
     <main>
       <section class="weather-info" id="mainContainer">
         <div id="weatherSearchView" class="weather-info__search-view">
-          <label class="weather-info__search-label" for="searchInput"
+          <label class="weather-info__search__label" for="searchInput"
             >Check weather:</label
           >
           <input type="text" id="searchInput" />
           <button id="searchButton">search</button>
         </div>
 
-        <div id="weatherFrecastView" class="weather-info__forecast-view">
-          <button class="weather-info__btn-return" id="e=returnToSearchBtn">
+        <div id="weatherForecastView" class="weather-info__forecast-view">
+          <button class="weather-info__btn-return" id="returnToSearchBtn">
             return
           </button>
 
-          <div class="weather-ifno__city">
+          <div class="weather-info__city">
             <h1 id="weatherCity"></h1>
-            <img src="" alt="" id="weatherIcon" />
+            <img id="weatherIcon" />
           </div>
 
           <div class="weather-info__temperatures">
@@ -36,5 +36,6 @@
         </div>
       </section>
     </main>
+    <script type="module" src="src/main.js"></script>
   </body>
 </html>
