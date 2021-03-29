@@ -7,7 +7,7 @@ const getDOMElems = (id) => {
 };
 
 const connectDOMElems = () => {
-  DOMElems.mainConteiner = getDOMElems("mainConteiner");
+  DOMElems.mainContainer = getDOMElems("mainContainer");
   DOMElems.weatherSearchView = getDOMElems("weatherSearchView");
   DOMElems.weatherForecastView = getDOMElems("weatherForecastView");
 
@@ -28,7 +28,8 @@ const connectDOMElems = () => {
 
 const setupListeners = () => {
   DOMElems.searchInput.addEventListener("keydown", onEnterSubmit);
-  DOMElems.searchButton.addEventListener("click", onClickSubmit);
+  DOMElems.searchButton.addEventListener("click", onSubmit);
+  DOMElems.returnToSearchBtn.addEventListener("click", returnToSearch);
 };
 
 const init = () => {
@@ -36,12 +37,51 @@ const init = () => {
   setupListeners();
 };
 
+const onSubmit = () => {
+  animateViewChange();
+  let query = DOMElems.searchInput.value;
+  getWeatherByCity(query).then((data) => {
+    console.log(data);
+    changeView();
+    animateViewChange();
+  });
+};
+
 const onEnterSubmit = (e) => {
   if (e.key === "Enter") {
-    let query = DOMElems.searchInput.value;
-    getWeatherByCity(query).then((data) => console.log(data));
+    animateViewChange();
+    onSubmit();
   }
 };
-const onClickSubmit = () => {};
+
+const animateViewChange = () => {
+  if (
+    DOMElems.mainContainer.style.opacity === "1" ||
+    DOMElems.mainContainer.style.opacity === ""
+  ) {
+    DOMElems.mainContainer.style.opacity = "0";
+  } else {
+    DOMElems.mainContainer.style.opacity = "1";
+  }
+};
+
+const changeView = () => {
+  if (DOMElems.weatherSearchView.style.display !== "none") {
+    DOMElems.weatherSearchView.style.display = "none";
+    DOMElems.weatherForecastView.style.display = "block";
+  } else {
+    DOMElems.weatherSearchView.style.display = "flex";
+    DOMElems.weatherForecastView.style.display = "none";
+  }
+};
+
+const returnToSearch = () => {
+  animateViewChange();
+
+  setTimeout(() => {
+    changeView();
+    animateViewChange();
+  }, 500);
+};
 
 document.addEventListener("DOMContentLoaded", init);
