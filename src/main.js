@@ -34,10 +34,15 @@ class WeatherApp {
 
       let query = this.DOMElems.searchInput.value;
 
-      getWeatherByCity(query).then((data) => {
-        this.displayWeatherData(data);
-        console.log(data);
-      });
+      getWeatherByCity(query)
+        .then((data) => {
+          this.displayWeatherData(data);
+        })
+        .catch(() => {
+          this.animateViewChange();
+          this.DOMElems.searchInput.style.borderColor = "red";
+          this.showErrorText();
+        });
     }
   };
 
@@ -87,6 +92,19 @@ class WeatherApp {
     this.DOMElems.weatherCurrentTemp.textContent = `Current temperature: ${currTemp}`;
     this.DOMElems.weatherMaxTemp.textContent = `Max temp ${maxTemp}`;
     this.DOMElems.weatherMinTemp.textContent = `Min temp ${minTemp}`;
+  };
+
+  showErrorText = () => {
+    const err = document.createElement("p");
+    const errText = document.createTextNode(
+      "City not found. Please correct your spelling."
+    );
+
+    err.appendChild(errText);
+    this.DOMElems.searchButton.parentNode.insertBefore(
+      err,
+      this.DOMElems.searchButton
+    );
   };
 }
 
