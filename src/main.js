@@ -39,11 +39,14 @@ class WeatherApp {
           this.displayWeatherData(data);
           this.DOMElems.searchInput.style.borderColor = "black";
           this.DOMElems.searchInput.value = "";
+          this.DOMElems.weatherErrorInfo.textContent = "";
         })
         .catch(() => {
+          this.DOMElems.weatherErrorInfo.textContent = "";
           this.animateViewChange();
           this.DOMElems.searchInput.style.borderColor = "red";
-          this.showErrorText();
+          this.DOMElems.weatherErrorInfo.textContent =
+            "City not found. Please correct your spelling.";
           this.DOMElems.searchInput.value = "";
         });
     }
@@ -95,19 +98,6 @@ class WeatherApp {
     this.DOMElems.weatherCurrentTemp.textContent = `Current temperature: ${currTemp}`;
     this.DOMElems.weatherMaxTemp.textContent = `Max temp ${maxTemp}`;
     this.DOMElems.weatherMinTemp.textContent = `Min temp ${minTemp}`;
-  };
-
-  showErrorText = () => {
-    const err = document.createElement("p");
-    const errText = document.createTextNode(
-      "City not found. Please correct your spelling."
-    );
-
-    err.appendChild(errText);
-    this.DOMElems.searchButton.parentNode.insertBefore(
-      err,
-      this.DOMElems.searchButton
-    );
   };
 }
 
