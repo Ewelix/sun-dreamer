@@ -88,7 +88,7 @@ class WeatherApp {
 
     const weather = data.consolidated_weather[0];
     this.DOMElems.weatherCity.textContent = data.title;
-    this.DOMElems.weatherIcon.src = `https://www.metaweather.com/static/img/weather/${weather.weather_state_abbr}.svg`;
+    // this.DOMElems.weatherIcon.src = `https://www.metaweather.com/static/img/weather/${weather.weather_state_abbr}.svg`;
     this.DOMElems.weatherIcon.alt = weather.weather_state_name;
 
     const currTemp = weather.the_temp.toFixed(2);

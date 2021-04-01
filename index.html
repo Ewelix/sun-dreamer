@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/main.css" />
     <title>Sun Dreamer 0.1</title>
   </head>
@@ -11,12 +16,20 @@
     <main>
       <section class="weather-info" id="mainContainer">
         <div id="weatherSearchView" class="weather-info__search-view">
-          <label class="weather-info__search__label" for="searchInput"
-            >Check weather:</label
-          >
-          <input type="text" id="searchInput" />
-          <p id="weatherErrorInfo"></p>
-          <button id="searchButton">search</button>
+          <div class="weather-info__search-intro">
+            <h2>Find the sun in your city</h2>
+            <div class="weather-info__search-img"></div>
+          </div>
+
+          <div class="weather-info__search-area">
+            <h3>Choose a city</h3>
+            <label class="weather-info__search__label" for="searchInput"
+              >Select a city to see the weather
+            </label>
+            <input type="text" id="searchInput" />
+            <p id="weatherErrorInfo"></p>
+            <button id="searchButton">search</button>
+          </div>
         </div>
 
         <div id="weatherForecastView" class="weather-info__forecast-view">
