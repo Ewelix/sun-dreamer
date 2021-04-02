@@ -90,13 +90,13 @@ class WeatherApp {
     this.DOMElems.weatherCity.textContent = data.title;
     this.DOMElems.weatherName.textContent = weather.weather_state_name;
 
-    const currTemp = weather.the_temp.toFixed(2);
-    const maxTemp = weather.max_temp.toFixed(2);
-    const minTemp = weather.min_temp.toFixed(2);
+    const currTemp = Math.round(weather.the_temp);
+    const weatherHumidity = Math.round(weather.humidity);
+    const weatherWindSpeed = Math.round(weather.wind_speed);
 
-    this.DOMElems.weatherCurrentTemp.textContent = `Current temp. ${currTemp}°C`;
-    this.DOMElems.weatherMaxTemp.textContent = `Max. temp ${maxTemp}°C`;
-    this.DOMElems.weatherMinTemp.textContent = `Min. temp ${minTemp}°C`;
+    this.DOMElems.weatherCurrentTemp.textContent = `${currTemp}°C`;
+    this.DOMElems.weatherWindSpeed.textContent = `${weatherWindSpeed}km/h`;
+    this.DOMElems.weatherHumidity.textContent = `${weatherHumidity}%`;
   };
 }
 
