@@ -37,7 +37,7 @@ class WeatherApp {
       getWeatherByCity(query)
         .then((data) => {
           this.displayWeatherData(data);
-          this.DOMElems.searchInput.style.borderColor = "black";
+          this.DOMElems.searchInput.style.borderColor = "#003b73";
           this.DOMElems.searchInput.value = "";
           this.DOMElems.weatherErrorInfo.textContent = "";
         })
@@ -88,16 +88,15 @@ class WeatherApp {
 
     const weather = data.consolidated_weather[0];
     this.DOMElems.weatherCity.textContent = data.title;
-    // this.DOMElems.weatherIcon.src = `https://www.metaweather.com/static/img/weather/${weather.weather_state_abbr}.svg`;
-    this.DOMElems.weatherIcon.alt = weather.weather_state_name;
+    this.DOMElems.weatherName.textContent = weather.weather_state_name;
 
     const currTemp = weather.the_temp.toFixed(2);
     const maxTemp = weather.max_temp.toFixed(2);
     const minTemp = weather.min_temp.toFixed(2);
 
-    this.DOMElems.weatherCurrentTemp.textContent = `Current temperature: ${currTemp}`;
-    this.DOMElems.weatherMaxTemp.textContent = `Max temp ${maxTemp}`;
-    this.DOMElems.weatherMinTemp.textContent = `Min temp ${minTemp}`;
+    this.DOMElems.weatherCurrentTemp.textContent = `Current temp. ${currTemp}°C`;
+    this.DOMElems.weatherMaxTemp.textContent = `Max. temp ${maxTemp}°C`;
+    this.DOMElems.weatherMinTemp.textContent = `Min. temp ${minTemp}°C`;
   };
 }
 
