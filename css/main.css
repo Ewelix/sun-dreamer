@@ -27,7 +27,7 @@ main {
   position: relative;
   width: 350px;
   height: 650px;
-  margin: 15px;
+  margin: 10vh 15px 15px;
   padding: 25px;
   border-radius: 10px;
   background: var(--pink);
@@ -131,11 +131,16 @@ main {
 
 /*  forecast view */
 
+.weather-info__temperatures {
+  padding-left: 0;
+}
+
 .weather-info__temperatures > * {
   padding: 10px 5px 10px;
   font-weight: 400;
   border-bottom: 3px solid var(--dark-blue);
   border-top: none;
+  list-style: none;
 }
 
 .weather-icon__container {

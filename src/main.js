@@ -86,17 +86,37 @@ class WeatherApp {
     this.changeView();
     this.animateViewChange();
 
-    const weather = data.consolidated_weather[0];
+    const todayWeather = data.consolidated_weather[0];
     this.DOMElems.weatherCity.textContent = data.title;
-    this.DOMElems.weatherName.textContent = weather.weather_state_name;
+    this.DOMElems.weatherName.textContent = todayWeather.weather_state_name;
 
-    const currTemp = Math.round(weather.the_temp);
-    const weatherHumidity = Math.round(weather.humidity);
-    const weatherWindSpeed = Math.round(weather.wind_speed);
+    const currTemp = Math.round(todayWeather.the_temp);
+    const weatherHumidity = Math.round(todayWeather.humidity);
+    const weatherWindSpeed = Math.round(todayWeather.wind_speed);
 
     this.DOMElems.weatherCurrentTemp.textContent = `${currTemp}°C`;
     this.DOMElems.weatherWindSpeed.textContent = `${weatherWindSpeed}km/h`;
     this.DOMElems.weatherHumidity.textContent = `${weatherHumidity}%`;
+
+    // Forecast for the next 5 days
+
+    Object.entries(this.DOMElems.forecastForTheWeek.children).forEach(
+      (item, index) => {
+        index++;
+
+        const weather = data.consolidated_weather;
+
+        const dayOfTheWeek = new Date(
+          weather[index].applicable_date
+        ).toLocaleString("en-us", {
+          weekday: "long",
+        });
+
+        item[1].textContent = `${dayOfTheWeek} ${Math.round(
+          weather[index].the_temp
+        )}°C`;
+      }
+    );
   };
 }
 
