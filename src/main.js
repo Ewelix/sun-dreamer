@@ -99,7 +99,7 @@ class WeatherApp {
         item[1].children[0].textContent = dayOfTheWeek;
         item[1].children[1].src = `https://www.metaweather.com/static/img/weather/${weather[index].weather_state_abbr}.svg`;
         item[1].children[1].alt = weather[index].weather_state_name;
-        item[1].children[2].textContent = `${minTemp}°/${maxTemp}°`;
+        item[1].children[2].textContent = `${maxTemp}°/${minTemp}°`;
       }
     );
   };

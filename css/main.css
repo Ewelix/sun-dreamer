@@ -20,14 +20,13 @@ main {
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 90vh;
 }
 
 .weather-info {
   position: relative;
   width: 350px;
   height: 650px;
-  margin: 10vh 15px 15px;
+  margin: 30px 15px 15px;
   padding: 25px;
   border-radius: 10px;
   background: var(--pink);
@@ -105,6 +104,7 @@ main {
 }
 
 .weather-info__search-view button {
+  margin-top: -10px;
   padding: 10px 50px;
   border: 2px solid currentColor;
   background: transparent;
@@ -127,6 +127,33 @@ main {
 
 .weather-info__search-view button:focus {
   outline: 1px solid var(--dark-blue);
+}
+
+@media (max-width: 400px) {
+  .weather-info__search-img {
+    top: 70px;
+    left: 0;
+    width: 150px;
+    height: 150px;
+  }
+  .weather-info__search-view h2 {
+    left: 15px;
+    font-size: 36px;
+  }
+
+  .weather-info__search-view h3 {
+    font-size: 30px;
+  }
+
+  .weather-info__search-view label {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .weather-info {
+    margin-top: 80px;
+  }
 }
 
 /*  forecast view */
@@ -231,4 +258,10 @@ main {
   color: var(--orange);
   font-weight: 400;
   font-size: 14px;
+}
+
+/* Footer */
+
+footer {
+  margin-top: 30px;
 }
