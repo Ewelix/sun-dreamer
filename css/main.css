@@ -195,19 +195,22 @@ main {
 .weather-info__parameters {
   display: flex;
   justify-content: space-between;
+  width: 140px;
+  margin-top: -30px;
   margin-bottom: 20px;
+  margin-left: auto;
 }
 
 .weather-info__parameter {
   display: flex;
   align-items: center;
   font-weight: 500;
-  color: var(--orange);
+  font-size: 15px;
 }
 
 .weather-info__parameters img {
   width: 20px;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .weather-info__temperatures {
