@@ -82,6 +82,28 @@ class WeatherApp {
     }, 500);
   };
 
+  forecastForTheNextDays = (data) => {
+    Object.entries(this.DOMElems.forecastForTheWeek.children).forEach(
+      (item, index) => {
+        index++;
+
+        const weather = data.consolidated_weather;
+        const dayOfTheWeek = new Date(
+          weather[index].applicable_date
+        ).toLocaleString("en-us", {
+          weekday: "long",
+        });
+        const maxTemp = Math.round(weather[index].max_temp);
+        const minTemp = Math.round(weather[index].min_temp);
+
+        item[1].children[0].textContent = dayOfTheWeek;
+        item[1].children[1].src = `https://www.metaweather.com/static/img/weather/${weather[index].weather_state_abbr}.svg`;
+        item[1].children[1].alt = weather[index].weather_state_name;
+        item[1].children[2].textContent = `${minTemp}°/${maxTemp}°`;
+      }
+    );
+  };
+
   displayWeatherData = (data) => {
     this.changeView();
     this.animateViewChange();
@@ -98,25 +120,7 @@ class WeatherApp {
     this.DOMElems.weatherWindSpeed.textContent = `${weatherWindSpeed}km/h`;
     this.DOMElems.weatherHumidity.textContent = `${weatherHumidity}%`;
 
-    // Forecast for the next 5 days
-
-    Object.entries(this.DOMElems.forecastForTheWeek.children).forEach(
-      (item, index) => {
-        index++;
-
-        const weather = data.consolidated_weather;
-
-        const dayOfTheWeek = new Date(
-          weather[index].applicable_date
-        ).toLocaleString("en-us", {
-          weekday: "long",
-        });
-
-        item[1].textContent = `${dayOfTheWeek} ${Math.round(
-          weather[index].the_temp
-        )}°C`;
-      }
-    );
+    this.forecastForTheNextDays(data);
   };
 }
 

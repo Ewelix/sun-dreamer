@@ -136,6 +136,8 @@ main {
 }
 
 .weather-info__temperatures > * {
+  display: flex;
+  justify-content: space-between;
   padding: 10px 5px 10px;
   font-weight: 400;
   border-bottom: 3px solid var(--dark-blue);
@@ -143,8 +145,21 @@ main {
   list-style: none;
 }
 
+.weather-info__temperatures .weatherForecastDay {
+  width: 70px;
+}
+
+.weather-info__temperatures .weatherForecastTemp {
+  width: 50px;
+  text-align: right;
+}
+
 .weather-icon__container {
   height: 150px;
+}
+
+.weatherForecastIcon {
+  width: 20px;
 }
 
 .weather-info__title {
