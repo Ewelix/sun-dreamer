@@ -87,19 +87,22 @@ class WeatherApp {
       (item, index) => {
         index++;
 
-        const weather = data.consolidated_weather;
-        const dayOfTheWeek = new Date(
-          weather[index].applicable_date
-        ).toLocaleString("en-us", {
-          weekday: "long",
-        });
-        const maxTemp = Math.round(weather[index].max_temp);
-        const minTemp = Math.round(weather[index].min_temp);
+        const weather = data.consolidated_weather[index];
+        const dailyWeather = item[1].children;
+        const dayOfTheWeek = new Date(weather.applicable_date).toLocaleString(
+          "en-us",
+          {
+            weekday: "long",
+          }
+        );
+        const forecastIconSrc = `https://www.metaweather.com/static/img/weather/${weather.weather_state_abbr}.svg`;
+        const maxTemp = Math.round(weather.max_temp);
+        const minTemp = Math.round(weather.min_temp);
 
-        item[1].children[0].textContent = dayOfTheWeek;
-        item[1].children[1].src = `https://www.metaweather.com/static/img/weather/${weather[index].weather_state_abbr}.svg`;
-        item[1].children[1].alt = weather[index].weather_state_name;
-        item[1].children[2].textContent = `${maxTemp}°/${minTemp}°`;
+        dailyWeather[0].textContent = dayOfTheWeek;
+        dailyWeather[1].src = forecastIconSrc;
+        dailyWeather[1].alt = weather.weather_state_name;
+        dailyWeather[2].textContent = `${maxTemp}°/${minTemp}°`;
       }
     );
   };
