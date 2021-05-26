@@ -1,3 +1,5 @@
+/* General styles */
+
 :root {
   --dark-blue: #003b73;
   --pink: #edaec0;
@@ -5,32 +7,29 @@
 }
 
 body {
-  font-family: "Roboto", sans-serif;
-  margin: 0;
   color: var(--dark-blue);
+  font-family: "Roboto", sans-serif;
   background: var(--dark-blue);
-}
-
-h1 {
-  font-size: 300%;
 }
 
 main {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
 }
+
+h1 {
+  font-size: 3em;
+}
+
+/* Introduction view */
 
 .weather-info {
   position: relative;
-  width: 350px;
+  width: 100%;
   height: 650px;
-  margin: 30px 15px 15px;
   padding: 25px;
-  border-radius: 10px;
   background: var(--pink);
-  box-shadow: 0px 0px 10px 3px rgba(36, 36, 36, 0.2);
   transition-duration: 0.5s;
   transition-property: opacity;
 }
@@ -45,8 +44,8 @@ main {
 
 .weather-info__search-img {
   position: relative;
-  top: 80px;
-  left: -70px;
+  top: 5.5em;
+  left: -3em;
   width: 200px;
   height: 200px;
   background: var(--orange);
@@ -55,69 +54,60 @@ main {
 
 .weather-info__search-view h2 {
   position: absolute;
-  z-index: 9;
-  width: 270px;
-  margin-right: 20px;
+  right: 7%;
+  z-index: 1;
+  width: 6.5em;
   color: var(--dark-blue);
-  font-weight: 700;
-  font-size: 42px;
+  font-size: 2.6em;
   text-align: right;
 }
 
 .weather-info__search-view h3 {
-  margin-bottom: 10px;
+  margin-bottom: 0.5em;
   color: var(--dark-blue);
-  font-size: 36px;
+  font-size: 2.1em;
   font-weight: 400;
+  text-align: center;
 }
 
 .weather-info__search-area {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   width: 80%;
 }
 
 .weather-info__search-view label {
-  margin-bottom: 15px;
-  font-size: 16px;
+  margin-bottom: 1.5em;
   color: var(--dark-blue);
   font-weight: 300;
-}
-
-.weather-info__search-view input {
-  width: 93%;
-  margin-bottom: -10px;
-  padding: 10px;
-  border: 2px solid var(--dark-blue);
-  box-shadow: 0px 0px 10px 3px rgba(36, 36, 36, 0.05);
-  color: var(--orange);
-  font-size: 120%;
   text-align: center;
 }
 
+.weather-info__search-view input {
+  margin-bottom: -0.5em;
+  padding: 0.5em;
+  color: var(--orange);
+  font-size: 120%;
+  text-align: center;
+  border: 2px solid var(--dark-blue);
+  box-shadow: 0 0 10px 3px rgba(36, 36, 36, 0.05);
+}
+
 .weather-info__search-error {
-  padding: 5px 0;
-  color: red;
+  color: rgb(187, 48, 48);
   font-size: 13px;
+  line-height: 2em;
 }
 
 .weather-info__search-view button {
-  margin-top: -10px;
-  padding: 10px 50px;
-  border: 2px solid currentColor;
-  background: transparent;
+  padding: 0.6em 6em;
   color: var(--dark-blue);
-  font-size: 100%;
   font-weight: 500;
-  font-family: "Roboto", sans-serif;
   letter-spacing: 1px;
   cursor: pointer;
-}
-
-.weather-info__search-view button {
-  width: 100%;
+  border: 2px solid currentColor;
+  background: transparent;
 }
 
 .weather-info__search-view button:hover {
@@ -125,34 +115,12 @@ main {
   border: 2px solid var(--dark-blue);
 }
 
-.weather-info__search-view button:focus {
-  outline: 1px solid var(--dark-blue);
-}
-
-@media (max-width: 400px) {
-  .weather-info__search-img {
-    top: 70px;
-    left: 0;
-    width: 150px;
-    height: 150px;
-  }
-  .weather-info__search-view h2 {
-    left: 15px;
-    font-size: 36px;
-  }
-
-  .weather-info__search-view h3 {
-    font-size: 30px;
-  }
-
-  .weather-info__search-view label {
-    font-size: 15px;
-  }
-}
-
-@media (min-width: 768px) {
+@media (min-width: 480px) {
   .weather-info {
-    margin-top: 80px;
+    width: 350px;
+    margin-top: 2em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 3px rgba(36, 36, 36, 0.2);
   }
 }
 
@@ -172,7 +140,7 @@ main {
   }
 }
 
-/*  forecast view */
+/*  Search result view */
 
 .weather-info__temperatures {
   padding-left: 0;
@@ -202,7 +170,7 @@ main {
 }
 
 .weatherForecastIcon {
-  width: 20px;
+  width: 1.6em;
 }
 
 .weather-info__title {
@@ -265,7 +233,10 @@ main {
   cursor: pointer;
 }
 
+/* Footer */
+
 .weather-info__attribution {
+  padding-top: 2em;
   text-align: center;
   opacity: 0.7;
 }
@@ -281,8 +252,14 @@ main {
   font-size: 14px;
 }
 
-/* Footer */
+.weather-info__attribution a:hover,
+.weather-info__attribution a:visited,
+.weather-info__attribution a:focus {
+  color: #d7b1a6;
+  text-decoration: none;
+}
 
-footer {
-  margin-top: 30px;
+.weather-info__attribution a:active {
+  color: var(--dark-blue);
+  background-color: var(--orange);
 }

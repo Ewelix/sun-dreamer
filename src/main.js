@@ -44,7 +44,7 @@ class WeatherApp {
         .catch(() => {
           this.DOMElems.weatherErrorInfo.textContent = "";
           this.animateViewChange();
-          this.DOMElems.searchInput.style.borderColor = "red";
+          this.DOMElems.searchInput.style.borderColor = "rgb(187, 48, 48)";
           this.DOMElems.weatherErrorInfo.textContent =
             "City not found. Please correct your spelling.";
           this.DOMElems.searchInput.value = "";
@@ -117,6 +117,7 @@ class WeatherApp {
     const weatherWindSpeed = Math.round(todayWeather.wind_speed);
 
     this.DOMElems.mainWeatherIcon.src = `https://www.metaweather.com/static/img/weather/${todayWeather.weather_state_abbr}.svg`;
+    this.DOMElems.mainWeatherIcon.alt = todayWeather.weather_state_name;
     this.DOMElems.weatherCity.textContent = data.title;
     this.DOMElems.weatherName.textContent = todayWeather.weather_state_name;
     this.DOMElems.weatherCurrentTemp.textContent = `${currTemp}°C`;
