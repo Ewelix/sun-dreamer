@@ -84,11 +84,11 @@ class WeatherApp {
 
   forecastForTheNextDays = (data) => {
     Object.entries(this.DOMElems.forecastForTheWeek.children).forEach(
-      (item, index) => {
+      (entry, index) => {
         index++;
 
         const weather = data.consolidated_weather[index];
-        const dailyWeather = item[1].children;
+        const [dayTitle, weatherIcon, tempInfo] = entry[1].children;
         const dayOfTheWeek = new Date(weather.applicable_date).toLocaleString(
           "en-us",
           {
@@ -99,10 +99,10 @@ class WeatherApp {
         const maxTemp = Math.round(weather.max_temp);
         const minTemp = Math.round(weather.min_temp);
 
-        dailyWeather[0].textContent = dayOfTheWeek;
-        dailyWeather[1].src = forecastIconSrc;
-        dailyWeather[1].alt = weather.weather_state_name;
-        dailyWeather[2].textContent = `${maxTemp}°/${minTemp}°`;
+        dayTitle.textContent = dayOfTheWeek;
+        weatherIcon.src = forecastIconSrc;
+        weatherIcon.alt = weather.weather_state_name;
+        tempInfo.textContent = `${maxTemp}°/${minTemp}°`;
       }
     );
   };
@@ -112,13 +112,13 @@ class WeatherApp {
     this.animateViewChange();
 
     const todayWeather = data.consolidated_weather[0];
-    this.DOMElems.weatherCity.textContent = data.title;
-    this.DOMElems.weatherName.textContent = todayWeather.weather_state_name;
-
     const currTemp = Math.round(todayWeather.the_temp);
     const weatherHumidity = Math.round(todayWeather.humidity);
     const weatherWindSpeed = Math.round(todayWeather.wind_speed);
 
+    this.DOMElems.mainWeatherIcon.src = `https://www.metaweather.com/static/img/weather/${todayWeather.weather_state_abbr}.svg`;
+    this.DOMElems.weatherCity.textContent = data.title;
+    this.DOMElems.weatherName.textContent = todayWeather.weather_state_name;
     this.DOMElems.weatherCurrentTemp.textContent = `${currTemp}°C`;
     this.DOMElems.weatherWindSpeed.textContent = `${weatherWindSpeed}km/h`;
     this.DOMElems.weatherHumidity.textContent = `${weatherHumidity}%`;

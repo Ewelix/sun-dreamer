@@ -156,6 +156,22 @@ main {
   }
 }
 
+/* Main icon animation */
+
+.weather-icon__container {
+  width: 100%;
+  animation: skyFloat 4s infinite alternate linear;
+}
+
+@keyframes skyFloat {
+  from {
+    margin-left: 0;
+  }
+  to {
+    margin-left: 20px;
+  }
+}
+
 /*  forecast view */
 
 .weather-info__temperatures {
