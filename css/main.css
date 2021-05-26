@@ -16,6 +16,11 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 85vh;
+}
+
+ul {
+  padding-left: 0;
 }
 
 h1 {
@@ -124,11 +129,23 @@ h1 {
   }
 }
 
+/*  Search result view */
+
+.weather-info__forecast-view {
+  display: none;
+}
+
 /* Main icon animation */
 
 .weather-icon__container {
   width: 100%;
+  max-height: 150px;
   animation: skyFloat 4s infinite alternate linear;
+}
+
+.weather-info__btn-return {
+  width: 10%;
+  cursor: pointer;
 }
 
 @keyframes skyFloat {
@@ -140,51 +157,6 @@ h1 {
   }
 }
 
-/*  Search result view */
-
-.weather-info__temperatures {
-  padding-left: 0;
-}
-
-.weather-info__temperatures > * {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 5px 10px;
-  font-weight: 400;
-  border-bottom: 3px solid var(--dark-blue);
-  border-top: none;
-  list-style: none;
-}
-
-.weather-info__temperatures .weatherForecastDay {
-  width: 70px;
-}
-
-.weather-info__temperatures .weatherForecastTemp {
-  width: 50px;
-  text-align: right;
-}
-
-.weather-icon__container {
-  height: 150px;
-}
-
-.weatherForecastIcon {
-  width: 1.6em;
-}
-
-.weather-info__title {
-  position: absolute;
-  top: 40px;
-  right: 0;
-  font-size: 24px;
-  writing-mode: tb-rl;
-}
-
-.weather-info__forecast-view {
-  display: none;
-}
-
 .weather-info__city {
   display: flex;
   justify-content: space-between;
@@ -192,45 +164,63 @@ h1 {
 }
 
 .weather-info__heading {
-  font-size: 50px;
-}
-
-.weather-info__city img {
-  width: 100px;
-}
-
-.weather-info__city h1 {
   margin: 20px 0;
+  font-size: 3.5em;
 }
 
 .weather-info__parameters {
   display: flex;
   justify-content: space-between;
-  width: 140px;
-  margin-top: -30px;
-  margin-bottom: 20px;
+  width: 45%;
   margin-left: auto;
+  margin-right: 0;
 }
 
 .weather-info__parameter {
   display: flex;
   align-items: center;
   font-weight: 500;
-  font-size: 15px;
 }
 
 .weather-info__parameters img {
-  width: 20px;
+  width: 1.2em;
   margin-right: 5px;
 }
 
 .weather-info__temperatures {
-  padding-top: 20px;
+  padding-top: 1em;
 }
 
-.weather-info__btn-return {
-  width: 40px;
-  cursor: pointer;
+/* Forecast for the next days */
+
+.weather-info__temperatures > * {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 0.2em 0.5em;
+  font-weight: 400;
+  border-bottom: 3px solid var(--dark-blue);
+}
+
+.weatherForecastDay {
+  width: 4em;
+}
+
+.weatherForecastTemp {
+  width: 3em;
+  text-align: right;
+}
+
+.weatherForecastIcon {
+  max-width: 1.6em;
+}
+
+.weather-info__title {
+  position: absolute;
+  top: 7%;
+  right: 0;
+  font-size: 1.5em;
+  writing-mode: tb-rl;
 }
 
 /* Footer */
