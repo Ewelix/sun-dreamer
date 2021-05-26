@@ -267,6 +267,11 @@ main {
 
 .weather-info__attribution {
   text-align: center;
+  opacity: 0.7;
+}
+
+.weather-info__attribution img {
+  width: 15px;
 }
 
 .weather-info__attribution,
